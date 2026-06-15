@@ -54,17 +54,18 @@
         <h4 class="heading mb-2">
           {{ profile_user.email }}
         </h4>	
-		<p class="mb-0">{{profile.bio}}</p>
+		<p class="mb-15">{{profile.bio}}</p>
+    {% if request.user.is_authenticated  and request.user.id == profile_user.id %}
+<a class="btn btn-primary"
+   onmouseover="this.style.backgroundColor='white'; this.style.color='#495057';"
+   onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';"
+   href="{% url 'edit_profile' request.user.id %}"
+   style="color:white;">
+   Edit Profile
+</a>	  {% endif %}		
       </div>
 
-      <div class="col-lg-2 text-end">
-<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto" style="list-style:none;">
-	{% if request.user.is_authenticated  and request.user.id == profile_user.id %}
-	<li><a href="{% url 'edit_profile' request.user.id %}" style="color:white;">Edit Profile</a>	</li>		
-	{% endif %}			
-								
-						</ul>					
-      </div>
+      
 	  
 
 

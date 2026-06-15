@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<style>
+    
+    .form p, h3{
+        margin: 2% 33%;
+        width: 100%;
+        }
+    .form p{
+        margin: 2% 33%;
+        width: 50%;}
+    .my-container{
+    border-radius: 4px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+
+}
+    .btn-primary{
+        display: block;
+        margin: 2px auto;
+    }
+    .fields{
+        display: block;
+        margin:2 auto;
+        width: 260px;
+        
+
+    }
+
+    .formcontrol{
+        display: block;
+        width: 45%;
+        margin: 0 auto;
+    }
+    .form{
+
+        padding-top: 7%;
+        padding-bottom: 7%;
+        border-radius: 4px;
+            background-color:#f0f3f2b8 ;
+            box-shadow:0px 0px 10px black;
+
+    }
+    
+    
+   .labelcontrol{
+    width:100%;
+    justify-content: center;
+    margin:4px 28%;
+    color: #198754;
+
+}
+   .btn-primary{
+    margin-top: 10px;
+    width: 100px;
+    padding: 8px;
+   }
+   .error-messages{
+    display: block;
+    width:100%;
+    margin:2px 28%;
+    color: red;
+   }
+   .formcontrol::placeholder{
+    font-size: 12px;
+   }
+   
+
+</style>
+{% endblock head %}
+
+
+{% block content %}
+
+    <div class="my-container">
+
+    <form enctype="multipart/form-data" class="form" action="" method="POST">
+                        <h3>Create Post</h3>
+
+        {% csrf_token %}
+        {% for field in form %}
+        
+        <label class="labelcontrol">{{field.label}}</label>
+        <label class="labelcontrol">{{field}}</label>
+        
+        <span class="error-messages">{{field.errors}}</span>
+   
+   {% endfor %}
+    <button class="btn btn-primary" type="submit">Post</button>
+    </form>
+
+    </div>
+
+
+
+
+    
+{% endblock content %}
